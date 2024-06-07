@@ -1,5 +1,7 @@
-import 'package:flutter/widgets.dart';
-import 'package:pokemon_app/model/pokemon.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:pokemon_app/models/pokemon.dart';
+import 'package:pokemon_app/pages/detail/pokemon_detail_view.dart';
 import 'package:pokemon_app/services/api.dart';
 
 class PokemonListViewmodel extends ChangeNotifier {
@@ -33,8 +35,11 @@ class PokemonListViewmodel extends ChangeNotifier {
     isLoading = false;
   }
 
-  void onTapItem(Pokemon? pokemon) {
-    // TODO: Navigate to detail
+  void onTapItem(BuildContext context, Pokemon? pokemon) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => PokemonDetailView(pokemon: pokemon)),
+    );
   }
 
   ///
@@ -42,6 +47,12 @@ class PokemonListViewmodel extends ChangeNotifier {
   ///
 
   Future<void> _getPokemonList() async {
-    pokemonList = await services.getPokemonList();
+    try {
+      pokemonList = await services.getPokemonList();
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+    }
   }
 }

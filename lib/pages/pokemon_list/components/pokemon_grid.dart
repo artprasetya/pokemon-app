@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:pokemon_app/model/pokemon.dart';
+import 'package:pokemon_app/models/pokemon.dart';
 import 'package:pokemon_app/pages/pokemon_list/components/pokemon_card_item.dart';
 
 class PokemonGrid extends StatelessWidget {
   final List<Pokemon>? pokemonList;
-  final Function(Pokemon?) onTapItem;
+  final Function(BuildContext, Pokemon?) onTapItem;
 
   const PokemonGrid({
     Key? key,
