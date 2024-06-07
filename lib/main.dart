@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pokemon_app/pages/pokemon_list/pokemon_list_view.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class PokemonApp extends StatelessWidget {
       title: 'Pokemon App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.latoTextTheme(),
       ),
       home: const PokemonListView(),
     );

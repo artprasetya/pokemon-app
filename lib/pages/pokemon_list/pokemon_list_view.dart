@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_app/helper/helper.dart';
 import 'package:pokemon_app/pages/pokemon_list/components/pokemon_grid.dart';
 import 'package:pokemon_app/pages/pokemon_list/pokemon_list_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class PokemonListView extends StatelessWidget {
             children: [
               // Title
               Text(
-                'Pokedex',
+                capitalize('PokeDex'),
                 style: Theme.of(context).textTheme.headline4?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,

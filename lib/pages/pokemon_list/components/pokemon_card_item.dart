@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_app/model/pokemon.dart';
+import 'package:pokemon_app/helper/helper.dart';
+import 'package:pokemon_app/models/pokemon.dart';
 
 class PokemonCardItem extends StatelessWidget {
   final int index;
   final Pokemon? pokemon;
-  final Function(Pokemon?) onTapPokemon;
+  final Function(BuildContext, Pokemon?) onTapPokemon;
 
   const PokemonCardItem({
     Key? key,
@@ -22,16 +23,19 @@ class PokemonCardItem extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(18)),
-        onTap: () => onTapPokemon(pokemon),
+        onTap: () => onTapPokemon(context, pokemon),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.network(
-                  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png"),
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png",
+                height: 100,
+                fit: BoxFit.fitHeight,
+              ),
               const SizedBox(height: 8),
-              Text(pokemon?.name ?? ''),
+              Text(capitalize(pokemon?.name ?? '')),
             ],
           ),
         ),
